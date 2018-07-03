@@ -6,9 +6,11 @@ const MessageList = (props) => {
 
   return (
     <div className="MessageList">
-      {props.messages.map(msg => (
-        <Message message={msg} key={msg.id} />
-      ))}
+      {
+        props.messages.map(msg => (
+          <Message message={msg} key={msg.id} />
+        ))
+      }
     </div>
   );
 };

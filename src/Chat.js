@@ -9,17 +9,36 @@ class Chat extends Component {
     super()
     this.state = {
       messages: [
-        { id: 1, userName: 'Jayden', body: 'testing...1,2,3' },
-        { id: 2, userName: 'otherUser', body: 'here is another test' },
+        {
+          id: 1,
+          user: {
+            uid: 234,
+            displayName: 'Jayden',
+            email: 'test@test.com',
+          },
+          body: 'testing...1,2,3'
+        },
       ]
-    }
+    };
   }
+
+  addMessage = (body) => {
+    const messages = [...this.state.messages];
+    const user = this.props.user;
+    messages.push({
+      id: `${user.uid}-${Date.now()}`,
+      user,
+      body,
+    });
+    this.setState({ messages });
+  };
+
   render() {
     return (
       <div className="Chat">
         <ChatHeader />
         <MessageList messages={this.state.messages} />
-        <MessageForm />
+        <MessageForm addMessage={this.addMessage} />
       </div>
     );
   }
