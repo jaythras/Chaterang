@@ -35,13 +35,34 @@ class Chat extends Component {
 
   render() {
     return (
-      <div className="Chat">
+
+
+
+      <main className="Chat" style={styles}>
         <ChatHeader />
-        <MessageList messages={this.state.messages} />
-        <MessageForm addMessage={this.addMessage} />
-      </div>
+
+        <div className="MessageList">
+
+          <div className="roomAnnouncement">
+            <h3>#general</h3>
+            <p>This is the very beginning of the #general room.</p>
+          </div>
+
+          <MessageList messages={this.state.messages} />
+          <MessageForm addMessage={this.addMessage} />
+        </div>
+      </main>
     );
   }
 }
+
+const styles = {
+  chat: {
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
+  }
+
+};
 
 export default Chat;
