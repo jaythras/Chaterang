@@ -17,21 +17,39 @@ class Chat extends Component {
             displayName: 'Jayden',
             email: 'test@test.com',
           },
-          time: '2 : 30',
+          time: '2 : 30 PM',
           body: 'testing...1,2,3'
         },
       ],
     };
   }
 
+  getTime = () => {
+    let time = "";
+
+    const currentTime = new Date();
+    let hours = currentTime.getHours();
+    let minutes = currentTime.getMinutes();
+
+    if (minutes < 10) {
+      minutes = "0" + minutes
+    }
+    time += hours + " : " + minutes + " ";
+    if (hours > 11) {
+      time += "PM";
+    } else {
+      time += "AM";
+    }
+    return time;
+  }
+
   addMessage = (body) => {
-    const d = new Date();
     const messages = [...this.state.messages];
     const user = this.props.user;
     messages.push({
       id: `${user.uid}-${Date.now()}`,
       user,
-      time: `${d.getHours()} : ${d.getMinutes()}`,
+      time: this.getTime(),
       body,
     });
     this.setState({ messages });
