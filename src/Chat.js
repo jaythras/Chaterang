@@ -18,7 +18,7 @@ class Chat extends Component {
           },
           body: 'testing...1,2,3'
         },
-      ]
+      ],
     };
   }
 
