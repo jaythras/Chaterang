@@ -7,6 +7,7 @@ import MessageForm from './MessageForm';
 class Chat extends Component {
   constructor() {
     super()
+
     this.state = {
       messages: [
         {
@@ -16,6 +17,7 @@ class Chat extends Component {
             displayName: 'Jayden',
             email: 'test@test.com',
           },
+          time: '2 : 30',
           body: 'testing...1,2,3'
         },
       ],
@@ -23,11 +25,13 @@ class Chat extends Component {
   }
 
   addMessage = (body) => {
+    const d = new Date();
     const messages = [...this.state.messages];
     const user = this.props.user;
     messages.push({
       id: `${user.uid}-${Date.now()}`,
       user,
+      time: `${d.getHours()} : ${d.getMinutes()}`,
       body,
     });
     this.setState({ messages });

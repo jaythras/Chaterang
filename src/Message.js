@@ -8,9 +8,11 @@ const Message = (props) => {
       </div>
       <div className="details" style={styles.details}>
         <div className="Metadata" style={styles.metadata}>
-          <div className="user" style={styles.user}>{props.message.user.displayName}
+          <div className="user" style={styles.user}>
+            {props.message.user.displayName}
           </div>
           <div className="time" style={styles.time}>
+            {props.message.time}
           </div>
         </div>
         <div className="body">
