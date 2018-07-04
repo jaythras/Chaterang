@@ -60,7 +60,7 @@ class Chat extends Component {
 
 
 
-      <main className="Chat" style={styles}>
+      <main className="Chat" style={styles.chat}>
         <ChatHeader />
 
         <div className="MessageList">
