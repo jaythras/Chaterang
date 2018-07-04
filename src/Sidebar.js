@@ -4,7 +4,9 @@ const Sidebar = (props) => {
   return (
     <aside className="Sidebar" style={styles.sidebar}>
       <div className="UserInfo" style={styles.children}>
-        <div className="Avatar"></div>
+        <div className="Avatar"
+          style={styles.avatar}
+        ></div>
         <div className="user">
           {props.user.displayName}
         </div>
@@ -16,10 +18,10 @@ const Sidebar = (props) => {
         XTBC 18
       </h1>
       <nav className="RoomList" style={styles.children}>
-        <h2>Rooms</h2>
-        <ul>
-          <li><a href="#">general</a></li>
-          <li><a href="#">random</a></li>
+        <h2 styles={styles.RoomListH2}>Rooms</h2>
+        <ul style={styles.RoomListUl}>
+          <li style={styles.RoomListLi}><a href="#">general</a></li>
+          <li style={styles.RoomListLi}><a href="#">random</a></li>
         </ul>
       </nav>
     </aside>
@@ -45,6 +47,32 @@ const styles = {
     fontSize: '1.2rem',
     marginTop: 0,
     padding: '0 1rem',
+  },
+  avatar: {
+    background: 'url(https://api.adorable.io/avatars/32/davey@getfretless.com)',
+    padding: '0 1rem',
+
+
+  },
+  RoomListH2: {
+    fontSize: '1rem',
+    padding: '0 1rem',
+
+  },
+
+  RoomListUl: {
+    listStyle: 'none',
+    marginLeft: 0,
+    paddingLeft: 0,
+    padding: '0 1rem',
+
+  },
+  RoomListLi: {
+    display: 'block',
+    color: 'whitesmoke',
+    textDecoration: 'none',
+    padding: '0 1rem',
+
   },
 };
 
