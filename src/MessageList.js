@@ -5,7 +5,7 @@ import Message from './Message';
 const MessageList = (props) => {
 
   return (
-    <div className="MessageList">
+    <div className="MessageList" style={styles.MessageList}>
       {
         props.messages.map(msg => (
           <Message message={msg} key={msg.id} />
@@ -14,5 +14,14 @@ const MessageList = (props) => {
     </div>
   );
 };
+
+const styles = {
+  MessageList: {
+    backgroundColor: 'white',
+    flex: 1,
+    paddingBottom: '1rem',
+    overflowY: 'scroll',
+  }
+}
 
 export default MessageList;
