@@ -62,17 +62,8 @@ class Chat extends Component {
 
       <main className="Chat" style={styles.chat}>
         <ChatHeader />
-
-        <div className="MessageList">
-
-          <div className="roomAnnouncement">
-            <h3>#general</h3>
-            <p>This is the very beginning of the #general room.</p>
-          </div>
-
-          <MessageList messages={this.state.messages} />
-          <MessageForm addMessage={this.addMessage} />
-        </div>
+        <MessageList messages={this.state.messages} />
+        <MessageForm addMessage={this.addMessage} />
       </main>
     );
   }
@@ -84,7 +75,6 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
   }
-
 };
 
 export default Chat;

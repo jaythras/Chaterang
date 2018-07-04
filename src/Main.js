@@ -6,7 +6,7 @@ import Chat from './Chat';
 class Main extends Component {
   render() {
     return (
-      <div className='Main' style={styles}>
+      <div className='Main' style={styles.Main}>
         <Sidebar user={this.props.user} />
         <Chat user={this.props.user} />
       </div>
@@ -15,9 +15,11 @@ class Main extends Component {
 }
 
 const styles = {
-  display: 'flex',
-  alignItems: 'stretch',
-  height: '100vh',
+  Main: {
+    display: 'flex',
+    alignItems: 'stretch',
+    height: '100vh',
+  }
 };
 
 export default Main;
