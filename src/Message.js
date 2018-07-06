@@ -1,22 +1,24 @@
 import React from 'react';
 
-const Message = (props) => {
+import Avatar from './Avatar';
+
+const Message = ({ message }) => {
   return (
 
     <div className="Message" style={styles.message}>
-      <div className="Avatar" style={styles.avatar}>
-      </div>
+      <Avatar user={message.user} />
+
       <div className="details" style={styles.details}>
         <div className="Metadata" style={styles.metadata}>
           <div className="user" style={styles.user}>
-            {props.message.user.displayName}
+            {message.user.displayName}
           </div>
           <div className="time" style={styles.time}>
-            {props.message.time}
+            {message.time}
           </div>
         </div>
         <div className="body">
-          {props.message.body}
+          {message.body}
         </div>
       </div>
     </div>

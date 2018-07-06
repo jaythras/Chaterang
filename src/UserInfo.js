@@ -1,12 +1,13 @@
 import React from 'react';
 
+import Avatar from './Avatar';
 const UserInfo = ({ user }) => {
   return (
     <div
       className="UserInfo"
       style={styles.userInfo}
     >
-
+      <Avatar user={user} />
       <div className="user" style={styles.user}>
         {user.displayName}
       </div>
