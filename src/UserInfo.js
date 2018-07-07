@@ -1,6 +1,8 @@
 import React from 'react';
 
 import Avatar from './Avatar';
+import SignOutButton from './SignOutButton';
+
 const UserInfo = ({ user }) => {
   return (
     <div
@@ -11,6 +13,7 @@ const UserInfo = ({ user }) => {
       <div className="user" style={styles.user}>
         {user.displayName}
       </div>
+      <SignOutButton />
     </div>
   );
 };
