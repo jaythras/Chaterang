@@ -17,7 +17,7 @@ const MessageList = ({ messages }) => {
           <Message message={msg} key={msg.id} />
         ))
       }
-    </div >
+    </div>
   );
 };
 
