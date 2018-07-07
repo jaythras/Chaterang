@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { StyleSheet, css } from 'aphrodite';
 
 class MessageForm extends Component {
 
@@ -19,25 +20,27 @@ class MessageForm extends Component {
   render() {
     return (
       <form
-        className="MessageForm"
+        className={`MessageForm ${css(styles.messageForm)}`}
         onSubmit={this.handleSubmit}
-        style={styles.MessageForm}
+
       >
-        <div className="chatIcon" style={styles.chatIcon}>
+        <div className={css(styles.icon)}>
           <i className="fas fa-comment-alt"></i>
         </div>
 
         <input
           autoFocus
           required
+          className={css(styles.input)}
           type="text"
           name="body"
           placeholder="Type a message..."
           value={this.state.body}
           onChange={this.handleChange}
-          style={styles.input}
         />
-        <button type="submit" style={styles.button}>
+        <button type="submit"
+          className={css(styles.button)}
+        >
           <i className="far fa-paper-plane" title="Send"></i>
         </button>
       </form>
@@ -46,8 +49,8 @@ class MessageForm extends Component {
 }
 
 
-const styles = {
-  MessageForm: {
+const styles = StyleSheet.create({
+  messageForm: {
     backgroundColor: 'white',
     height: '3rem',
     display: 'flex',
@@ -58,7 +61,7 @@ const styles = {
     padding: 0,
   },
 
-  chatIcon: {
+  icon: {
     display: 'flex',
     borderRadius: '0.5rem',
     alignItems: 'center',
@@ -72,6 +75,10 @@ const styles = {
     flex: 1,
     fontSize: '1.2rem',
     border: 0,
+
+    ':focus': {
+      outline: 0,
+    },
   },
 
   button: {
@@ -83,8 +90,7 @@ const styles = {
     borderTopRightRadius: '0.5rem',
     borderBottomRightRadius: '0.5rem',
     border: '1px solid white',
-  },
-
-}
+  }
+});
 
 export default MessageForm;
