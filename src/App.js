@@ -24,6 +24,12 @@ class App extends Component {
     return this.state.user.uid;
   };
 
+  signOut = () => {
+    this.setState({ user: {} });
+    localStorage.removeItem('user');
+  };
+
+
 
   render() {
     return (
@@ -33,7 +39,7 @@ class App extends Component {
             ?
             <Main
               user={this.state.user}
-
+              signOut={this.signOut}
             />
             : <SignIn handleAuth={this.handleAuth} />
         }
