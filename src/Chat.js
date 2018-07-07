@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { base } from './base';
 
 import ChatHeader from './ChatHeader';
 import MessageList from './MessageList';
@@ -12,6 +13,15 @@ class Chat extends Component {
       messages: [],
     };
   }
+
+  componentDidMount() {
+    base.syncState('messages', {
+      context: this,
+      state: 'messages',
+      asArray: true,
+    });
+  }
+
 
   getTime = () => {
     let time = '';
