@@ -14,21 +14,24 @@ class Chat extends Component {
   }
 
   getTime = () => {
-    let time = "";
+    let time = '';
+    let timePeriod = '';
 
     const currentTime = new Date();
     let hours = currentTime.getHours();
     let minutes = currentTime.getMinutes();
 
+    if (hours > 11) {
+      hours = hours % 12;
+      timePeriod = 'PM';
+    } else {
+      timePeriod = 'AM';
+    }
+
     if (minutes < 10) {
       minutes = "0" + minutes
     }
-    time += hours + " : " + minutes + " ";
-    if (hours > 11) {
-      time += "PM";
-    } else {
-      time += "AM";
-    }
+    time = `${hours} : ${minutes} ${timePeriod}`;
     return time;
   }
 
