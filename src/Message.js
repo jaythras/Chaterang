@@ -5,8 +5,9 @@ import Metadata from './MetaData';
 
 const Message = ({ message }) => {
   return (
-
-    <div className="Message" style={styles.message}>
+    <div className="Message"
+      style={styles.message}
+    >
       <Avatar user={message.user} />
 
       <div style={styles.details}>
