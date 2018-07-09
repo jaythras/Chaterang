@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { base } from './base';
+import base from './base';
 
 import ChatHeader from './ChatHeader';
 import MessageList from './MessageList';
