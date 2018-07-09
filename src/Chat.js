@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import base from './base';
 
 import ChatHeader from './ChatHeader';
 import MessageList from './MessageList';
 import MessageForm from './MessageForm';
+import base from './base';
 
 class Chat extends Component {
   constructor() {
