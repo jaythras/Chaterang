@@ -47,7 +47,7 @@ class Chat extends Component {
     }
     time = `${hours} : ${minutes} ${timePeriod}`;
     return time;
-  }
+  };
 
   addMessage = (body) => {
     const messages = [...this.state.messages];
