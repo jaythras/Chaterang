@@ -9,6 +9,20 @@ class Main extends Component {
       name: 'general',
       description: 'General Chat',
     },
+    rooms: {
+      general: {
+        name: 'general',
+        description: 'General Chat',
+      },
+      random: {
+        name: 'random',
+        description: 'Chat for random information',
+      },
+      codeProbs: {
+        name: 'codeProbs',
+        description: 'Share code and ask questions',
+      }
+    },
   };
 
   render() {
@@ -17,6 +31,7 @@ class Main extends Component {
         <Sidebar
           user={this.props.user}
           signOut={this.props.signOut}
+          rooms={this.state.rooms}
         />
         <Chat
           user={this.props.user}
