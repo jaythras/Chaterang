@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import Sidebar from './Sidebar';
 import Chat from './Chat';
+import base from './base';
 
 class Main extends Component {
   state = {
@@ -9,21 +10,28 @@ class Main extends Component {
       name: 'general',
       description: 'General Chat',
     },
-    rooms: {
-      general: {
-        name: 'general',
-        description: 'General Chat',
-      },
-      random: {
-        name: 'random',
-        description: 'Chat for random information',
-      },
-      codeProbs: {
-        name: 'codeProbs',
-        description: 'Share code and ask questions',
-      }
-    },
+    rooms: {},
   };
+
+  componentDidMount() {
+    this.roomsRef = base.syncState(
+      'rooms',
+      {
+        context: this,
+        state: 'rooms',
+        defaultValue: {
+          general: {
+            name: 'general',
+            description: 'General Chat',
+          }
+        },
+      }
+    );
+  }
+
+  componentWillUnmount() {
+    base.removeBinding(this.roomsRef);
+  }
 
   setCurrentRoom = roomName => {
     const room = this.state.rooms[roomName];
