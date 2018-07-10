@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Sidebar from './Sidebar';
 import Chat from './Chat';
 import base from './base';
+import RoomForm from './RoomForm';
 
 class Main extends Component {
   state = {
@@ -33,19 +34,44 @@ class Main extends Component {
     base.removeBinding(this.roomsRef);
   }
 
+
+  addRoom = room => {
+    const rooms = { ...this.state.rooms };
+    rooms[room.name] = room;
+
+    this.setState({ rooms })
+  };
+
   setCurrentRoom = roomName => {
     const room = this.state.rooms[roomName];
     this.setState({ room });
   };
 
+
+  showRoomForm = () => {
+    this.setState({ showRoomForm: true })
+  }
+
+  hideRoomForm = () => {
+    this.setState({ showRoomForm: false })
+  }
+
   render() {
+    if (this.state.showRoomForm) {
+      return <RoomForm
+        addRoom={this.addRoom}
+        hideRoomForm={this.hideRoomForm}
+      />
+    }
     return (
       <div className='Main' style={styles}>
+
         <Sidebar
           user={this.props.user}
           signOut={this.props.signOut}
           rooms={this.state.rooms}
           setCurrentRoom={this.setCurrentRoom}
+          showRoomForm={this.showRoomForm}
         />
         <Chat
           user={this.props.user}
