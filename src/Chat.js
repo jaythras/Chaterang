@@ -18,14 +18,16 @@ class Chat extends Component {
     this.syncMessages();
   }
 
+
+
   syncMessages = () => {
     //Stop syncing with the current endpoint
     if (this.messagesRef) {
       base.removeBinding(this.messagesRef)
     }
 
-    //Sync woth the new endpoint
-    this.messagesRef = base.syncState('messages',
+    //Sync with the new endpoint
+    this.messagesRef = base.syncState(`messages/${this.props.room.name}`,
       {
         context: this,
         state: 'messages',
@@ -44,41 +46,16 @@ class Chat extends Component {
   }
 
 
-  getTime = () => {
-    let time = '';
-    let timePeriod = '';
-
-    const currentTime = new Date();
-    let hours = currentTime.getHours();
-    let minutes = currentTime.getMinutes();
-
-    if (hours > 11) {
-      hours = hours % 12;
-      timePeriod = 'PM';
-    } else {
-      timePeriod = 'AM';
-    }
-
-    //noon or midnight
-    if (hours === 0) {
-      hours = 12;
-    }
-    if (minutes < 10) {
-      minutes = "0" + minutes
-    }
-    time = `${hours} : ${minutes} ${timePeriod}`;
-    return time;
-  };
-
   addMessage = (body) => {
     const messages = [...this.state.messages];
     const user = this.props.user;
     messages.push({
       id: `${user.uid}-${Date.now()}`,
       user,
-      time: this.getTime(),
       body,
-    });
+      createdAt: Date.now(),
+    }
+    );
     this.setState({ messages });
   };
 
